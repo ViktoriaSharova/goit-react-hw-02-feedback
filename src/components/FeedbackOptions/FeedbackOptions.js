@@ -1,8 +1,22 @@
-export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-    <div>
-        {options.map(option => (
-            <btn key={option} onClick={() => onLeaveFeedback(option)}>{option}
-            </btn>
+import React, { Component } from 'react';
+import { Buttons, Button } from './FeedbackOptions.styled';
+
+export class FeedbackOptions extends Component {
+  render() {
+    return (
+      <Buttons>
+        {this.props.options.map(option => (
+          <li key={option}>
+            <Button
+              type="button"
+              name={option}
+              onClick={this.props.onLeaveFeedback}
+            >
+              {option}
+            </Button>
+          </li>
         ))}
-    </div>
-};
+      </Buttons>
+    );
+  }
+}
