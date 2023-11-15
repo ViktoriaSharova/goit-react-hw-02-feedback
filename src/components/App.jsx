@@ -3,6 +3,7 @@ import { Section } from "./Section/Section";
 import { Statistics } from "./Statistics";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
 import { Notification } from "./Notification/Notification";
+import { SectonWrap } from "./App.styled";
 import 'normalize.css';
 
 
@@ -34,7 +35,7 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <SectonWrap>
         <Section title="Please leave feed back">
           <FeedbackOptions
             options={Object.keys(this.state)}
@@ -47,14 +48,14 @@ export class App extends Component {
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={this.countTotalFeedback}
-              positivePercentage={this.countPositiveFeedbackPercentage}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           </Section>
         ) : (
           <Notification message="There is no feedback" />
         )}
-      </div>
+      </SectonWrap>
     );
-  }
-}
+  };
+};
